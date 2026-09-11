@@ -1,0 +1,112 @@
+<!-- "Find Your Rep" address lookup — partner version.
+     Paste into any raw HTML block (Code Block in Squarespace, Custom HTML in
+     WordPress, Embed HTML in Wix). Self-contained: no stylesheet, no library,
+     nothing to add to your site header.
+     It inherits your site's font and text colour and works on a light or dark
+     background. To match your brand, change the one accent colour #1f5fd0 below.
+     Clicks are logged to the Dept. of Angels tracking sheet, tagged as coming
+     from a partner site. Address lookups are not stored. -->
+<div id="doa-lookup" style="font-family:inherit;color:inherit;margin:0;border:1px solid rgba(128,128,128,.45);border-radius:12px;padding:24px;box-sizing:border-box">
+  <form id="dl-form" style="display:flex;gap:8px;flex-wrap:wrap">
+    <input id="dl-addr" type="text" required placeholder="Your street address, city, state"
+      style="font-family:inherit;flex:1;min-width:240px;max-width:560px;padding:12px;border:1px solid rgba(128,128,128,.45);border-radius:8px;font-size:16px;background:#fff;color:#000"
+      autocomplete="street-address">
+    <button type="submit"
+      style="font-family:inherit;padding:12px 20px;border:0;border-radius:8px;background:#1f5fd0;color:#ffffff;font-size:16px;font-weight:600;cursor:pointer">
+      Find your reps</button>
+  </form>
+  <p style="font-size:13px;opacity:.72;margin:6px 2px">Use your full street address for the most accurate match. Your address is never stored.</p>
+  <div id="dl-out" aria-live="polite"></div>
+</div>
+<script>
+(function(){
+var KEY="e096a58aee065ac0d88989b25a20c0e6c20ddee", EXEC="https://script.google.com/macros/s/AKfycbyynp84tvagRvw24lZZHLp_YMgGAOpKnmm9Ds0DjgWu0uxvN9G4kmro27E3gtvmD6YZ/exec";
+var SRC="partner";
+var FEAT={"23":"obernolte","26":"brownley","27":"whitesides","28":"chu","29":"rivas",
+"30":"friedman","31":"cisneros","32":"sherman","34":"gomez","35":"torres","36":"lieu",
+"37":"kamlager","38":"sanchez","42":"garcia","43":"waters","44":"barragan","45":"tran"};
+var CA_SENATORS=[["padilla","Sen. Alex Padilla"],["schiff","Sen. Adam Schiff"]];
+var TRK={
+padilla:["tel:+12022243553","https://www.padilla.senate.gov/contact/contact-form/","https://x.com/intent/post?text=%40SenAlexPadilla%20Two-thirds%20of%20LA%20fire%20survivors%20are%20still%20displaced%20and%20waiting%20on%20federal%20recovery%20funding.%20Please%20keep%20fighting%20to%20get%20substantial%20disaster%20recovery%20funding%20for%20Los%20Angeles%20into%20the%20next%20supplemental.%20%23fundtherecovery"],
+schiff:["tel:+12022243841","https://www.schiff.senate.gov/contact/","https://x.com/intent/post?text=%40SenAdamSchiff%20Two-thirds%20of%20LA%20fire%20survivors%20are%20still%20displaced%20and%20waiting%20on%20federal%20recovery%20funding.%20Please%20keep%20fighting%20to%20get%20substantial%20disaster%20recovery%20funding%20for%20Los%20Angeles%20into%20the%20next%20supplemental.%20%23fundtherecovery"],
+obernolte:["tel:+12022255861","https://obernolte.house.gov/contact","https://x.com/intent/post?text=%40JayObernolte%20Two-thirds%20of%20LA%20fire%20survivors%20are%20still%20displaced%20and%20waiting%20on%20federal%20recovery%20funding.%20Please%20keep%20fighting%20to%20get%20substantial%20disaster%20recovery%20funding%20for%20Los%20Angeles%20into%20the%20next%20supplemental.%20%23fundtherecovery"],
+brownley:["tel:+12022255811","https://juliabrownley.house.gov/contact/","https://x.com/intent/post?text=%40RepBrownley%20Two-thirds%20of%20LA%20fire%20survivors%20are%20still%20displaced%20and%20waiting%20on%20federal%20recovery%20funding.%20Please%20keep%20fighting%20to%20get%20substantial%20disaster%20recovery%20funding%20for%20Los%20Angeles%20into%20the%20next%20supplemental.%20%23fundtherecovery"],
+whitesides:["tel:+12022251956","https://whitesides.house.gov/contact","https://x.com/intent/post?text=%40Rep_Whitesides%20Two-thirds%20of%20LA%20fire%20survivors%20are%20still%20displaced%20and%20waiting%20on%20federal%20recovery%20funding.%20Please%20keep%20fighting%20to%20get%20substantial%20disaster%20recovery%20funding%20for%20Los%20Angeles%20into%20the%20next%20supplemental.%20%23fundtherecovery"],
+chu:["tel:+12022255464","https://chu.house.gov/contact","https://x.com/intent/post?text=%40RepJudyChu%20Two-thirds%20of%20LA%20fire%20survivors%20are%20still%20displaced%20and%20waiting%20on%20federal%20recovery%20funding.%20Please%20keep%20fighting%20to%20get%20substantial%20disaster%20recovery%20funding%20for%20Los%20Angeles%20into%20the%20next%20supplemental.%20%23fundtherecovery"],
+rivas:["tel:+12022256131","https://rivas.house.gov/contact","https://x.com/intent/post?text=%40RepLuzRivas%20Two-thirds%20of%20LA%20fire%20survivors%20are%20still%20displaced%20and%20waiting%20on%20federal%20recovery%20funding.%20Please%20keep%20fighting%20to%20get%20substantial%20disaster%20recovery%20funding%20for%20Los%20Angeles%20into%20the%20next%20supplemental.%20%23fundtherecovery"],
+friedman:["tel:+12022254176","https://friedman.house.gov/contact","https://x.com/intent/post?text=%40RepFriedmanCA%20Two-thirds%20of%20LA%20fire%20survivors%20are%20still%20displaced%20and%20waiting%20on%20federal%20recovery%20funding.%20Please%20keep%20fighting%20to%20get%20substantial%20disaster%20recovery%20funding%20for%20Los%20Angeles%20into%20the%20next%20supplemental.%20%23fundtherecovery"],
+cisneros:["tel:+12022255256","https://cisneros.house.gov/contact","https://x.com/intent/post?text=%40RepGilCisneros%20Two-thirds%20of%20LA%20fire%20survivors%20are%20still%20displaced%20and%20waiting%20on%20federal%20recovery%20funding.%20Please%20keep%20fighting%20to%20get%20substantial%20disaster%20recovery%20funding%20for%20Los%20Angeles%20into%20the%20next%20supplemental.%20%23fundtherecovery"],
+sherman:["tel:+12022255911","https://sherman.house.gov/contact","https://x.com/intent/post?text=%40BradSherman%20Two-thirds%20of%20LA%20fire%20survivors%20are%20still%20displaced%20and%20waiting%20on%20federal%20recovery%20funding.%20Please%20keep%20fighting%20to%20get%20substantial%20disaster%20recovery%20funding%20for%20Los%20Angeles%20into%20the%20next%20supplemental.%20%23fundtherecovery"],
+gomez:["tel:+12022256235","https://gomez.house.gov/contact","https://x.com/intent/post?text=%40RepJimmyGomez%20Two-thirds%20of%20LA%20fire%20survivors%20are%20still%20displaced%20and%20waiting%20on%20federal%20recovery%20funding.%20Please%20keep%20fighting%20to%20get%20substantial%20disaster%20recovery%20funding%20for%20Los%20Angeles%20into%20the%20next%20supplemental.%20%23fundtherecovery"],
+torres:["tel:+12022256161","https://torres.house.gov/contact","https://x.com/intent/post?text=%40NormaJTorres%20Two-thirds%20of%20LA%20fire%20survivors%20are%20still%20displaced%20and%20waiting%20on%20federal%20recovery%20funding.%20Please%20keep%20fighting%20to%20get%20substantial%20disaster%20recovery%20funding%20for%20Los%20Angeles%20into%20the%20next%20supplemental.%20%23fundtherecovery"],
+lieu:["tel:+12022253976","https://lieu.house.gov/contact","https://x.com/intent/post?text=%40RepTedLieu%20Two-thirds%20of%20LA%20fire%20survivors%20are%20still%20displaced%20and%20waiting%20on%20federal%20recovery%20funding.%20Please%20keep%20fighting%20to%20get%20substantial%20disaster%20recovery%20funding%20for%20Los%20Angeles%20into%20the%20next%20supplemental.%20%23fundtherecovery"],
+kamlager:["tel:+12022257084","https://kamlager-dove.house.gov/contact","https://x.com/intent/post?text=%40RepKamlagerDove%20Two-thirds%20of%20LA%20fire%20survivors%20are%20still%20displaced%20and%20waiting%20on%20federal%20recovery%20funding.%20Please%20keep%20fighting%20to%20get%20substantial%20disaster%20recovery%20funding%20for%20Los%20Angeles%20into%20the%20next%20supplemental.%20%23fundtherecovery"],
+sanchez:["tel:+12022256676","https://lindasanchez.house.gov/contact","https://x.com/intent/post?text=%40RepLindaSanchez%20Two-thirds%20of%20LA%20fire%20survivors%20are%20still%20displaced%20and%20waiting%20on%20federal%20recovery%20funding.%20Please%20keep%20fighting%20to%20get%20substantial%20disaster%20recovery%20funding%20for%20Los%20Angeles%20into%20the%20next%20supplemental.%20%23fundtherecovery"],
+garcia:["tel:+12022257924","https://robertgarcia.house.gov/contact","https://x.com/intent/post?text=%40RepRobertGarcia%20Two-thirds%20of%20LA%20fire%20survivors%20are%20still%20displaced%20and%20waiting%20on%20federal%20recovery%20funding.%20Please%20keep%20fighting%20to%20get%20substantial%20disaster%20recovery%20funding%20for%20Los%20Angeles%20into%20the%20next%20supplemental.%20%23fundtherecovery"],
+waters:["tel:+12022252201","https://waters.house.gov/contact","https://x.com/intent/post?text=%40RepMaxineWaters%20Two-thirds%20of%20LA%20fire%20survivors%20are%20still%20displaced%20and%20waiting%20on%20federal%20recovery%20funding.%20Please%20keep%20fighting%20to%20get%20substantial%20disaster%20recovery%20funding%20for%20Los%20Angeles%20into%20the%20next%20supplemental.%20%23fundtherecovery"],
+barragan:["tel:+12022258220","https://barragan.house.gov/contact","https://x.com/intent/post?text=%40RepBarragan%20Two-thirds%20of%20LA%20fire%20survivors%20are%20still%20displaced%20and%20waiting%20on%20federal%20recovery%20funding.%20Please%20keep%20fighting%20to%20get%20substantial%20disaster%20recovery%20funding%20for%20Los%20Angeles%20into%20the%20next%20supplemental.%20%23fundtherecovery"],
+tran:["tel:+12022252415","https://tran.house.gov/contact","https://x.com/intent/post?text=%40RepDerekTranCA%20Two-thirds%20of%20LA%20fire%20survivors%20are%20still%20displaced%20and%20waiting%20on%20federal%20recovery%20funding.%20Please%20keep%20fighting%20to%20get%20substantial%20disaster%20recovery%20funding%20for%20Los%20Angeles%20into%20the%20next%20supplemental.%20%23fundtherecovery"]};
+var GENERIC="My name is ____.\n\n[Add in your own personal story here and why this matters to you]\n\nCommunities across the country are still waiting for the federal support they need to recover from devastating fires, floods, and storms. Disaster recovery is a national responsibility---and this is a moment to show that the federal government will stand with survivors, regardless of where they live.\n\nPlease fight to ensure substantial disaster recovery funding for Los Angeles---including the Eaton and Palisades fires---is included in a supplemental spending package, alongside the resources other disaster-affected communities urgently need. We are asking you to use your voice and your vote to make disaster relief a national priority.\n\nThank you for standing with disaster survivors across the country.";
+function esc(s){return String(s||"").replace(/[&<>"']/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];});}
+function btn(href,label,solid,t,a){return '<a href="'+esc(href)+'" target="_blank" rel="noopener noreferrer"'+(t?' data-t="'+esc(t)+'" data-a="'+esc(a)+'"':'')+' style="display:inline-block;box-sizing:border-box;vertical-align:middle;line-height:1.2;margin:4px 6px 4px 0;font-family:inherit;padding:10px 14px;border-radius:8px;font-size:15px;text-decoration:none;'+(solid?'border:1.5px solid #1f5fd0;background:#1f5fd0;color:#ffffff;font-weight:600':'border:1.5px solid currentColor;color:inherit')+'">'+label+'</a>';}
+function trkBtns(id){var d=TRK[id]; if(!d) return "";
+  return btn(d[0],"\uD83D\uDCDE Call",true,id,"call")+btn(d[1],"\u2709\uFE0F Email",false,id,"email")+btn(d[2],"\uD835\uDD4F Post",false,id,"post");}
+function card(inner){return '<div style="border:1px solid rgba(128,128,128,.45);border-radius:10px;padding:14px;margin:10px 0">'+inner+'</div>';}
+function copyBtn(id){return '<button data-copy="'+id+'" style="display:inline-block;box-sizing:border-box;vertical-align:middle;line-height:1.2;margin:4px 6px 4px 0;padding:10px 14px;border-radius:8px;border:1.5px solid currentColor;background:transparent;color:inherit;font-family:inherit;font-size:15px;cursor:pointer">Copy script</button>';}
+document.getElementById("dl-out").addEventListener("click",function(ev){
+  var el=ev.target.closest?ev.target.closest("[data-t]"):null;
+  if(el){try{fetch(EXEC+"?t="+encodeURIComponent(el.getAttribute("data-t"))+"&a="+encodeURIComponent(el.getAttribute("data-a"))+"&s="+SRC,{mode:"no-cors",keepalive:true});}catch(e){}}
+});
+document.getElementById("dl-form").addEventListener("submit",function(ev){
+  ev.preventDefault();
+  var out=document.getElementById("dl-out");
+  out.innerHTML='<p style="opacity:.72">Looking up your district\u2026</p>';
+  var q=encodeURIComponent(document.getElementById("dl-addr").value);
+  fetch("https://api.geocod.io/v1.9/geocode?q="+q+"&fields=cd&limit=1&api_key="+KEY)
+  .then(function(r){if(!r.ok)throw 0;return r.json();})
+  .then(function(j){
+    var res=j.results&&j.results[0]; if(!res) throw 0;
+    var st=res.address_components.state;
+    var cd=(res.fields.congressional_districts||[])[0]; if(!cd) throw 0;
+    var dist=String(cd.district_number);
+    var legs=cd.current_legislators||[];
+    var html="<h3 style='margin:16px 0 4px'>Your members of Congress</h3>";
+    if(st==="CA"){
+      CA_SENATORS.forEach(function(s){
+        html+=card("<b>"+s[1]+"</b> \u2014 U.S. Senator, California<br>"+trkBtns(s[0]));
+      });
+      if(FEAT[dist]){
+        var id=FEAT[dist];
+        var rep=legs.filter(function(l){return l.type==="representative";})[0];
+        html+=card("<b>"+esc(rep?rep.bio.first_name+" "+rep.bio.last_name:"Your Representative")+
+          "</b> \u2014 Representative, CA-"+dist+"<br>"+trkBtns(id));
+      } else legs.filter(function(l){return l.type==="representative";}).forEach(function(l){addGeneric(l);});
+    } else {
+      if(!legs.length){out.innerHTML="<p>We couldn't find your district \u2014 try adding your city and state.</p>";return;}
+      legs.forEach(function(l){addGeneric(l);});
+    }
+    function addGeneric(l){
+      var b=l.bio||{},c=l.contact||{};
+      var role=l.type==="senator"?"U.S. Senator, "+st:"Representative, "+st+"-"+dist;
+      var inner="<b>"+esc((b.first_name||"")+" "+(b.last_name||""))+"</b> \u2014 "+role+"<br>";
+      if(c.phone) inner+=btn("tel:+1"+String(c.phone).replace(/\D/g,""),"\uD83D\uDCDE Call "+esc(c.phone),true);
+      inner+=copyBtn("g");
+      if(c.contact_form||c.url) inner+=btn(c.contact_form||c.url,"Open contact form");
+      inner+="<p style='font-size:13px;opacity:.72;margin:6px 0 0'>Copy the script, then paste it into their contact form \u2014 members of Congress outside our featured list accept messages by webform.</p>";
+      html+=card(inner);
+    }
+    html+="<textarea id='dl-script' readonly style='position:absolute;left:-9999px'>"+esc(GENERIC)+"</textarea>";
+    out.innerHTML=html;
+    out.querySelectorAll("[data-copy]").forEach(function(b){
+      b.addEventListener("click",function(){
+        var ta=document.getElementById("dl-script");ta.style.position="static";ta.select();
+        try{navigator.clipboard?navigator.clipboard.writeText(ta.value):document.execCommand("copy");}catch(e){}
+        ta.style.position="absolute";b.textContent="Copied \u2713";setTimeout(function(){b.textContent="Copy script";},2000);
+      });
+    });
+  })
+  .catch(function(){out.innerHTML="<p>Sorry \u2014 we couldn't look that up. Try your full street address, or use "+
+    '<a style="color:inherit;text-decoration:underline" target="_blank" rel="noopener noreferrer" href="https://www.house.gov/representatives/find-your-representative">the House directory</a>.</p>';});
+});
+})();
+</script>
