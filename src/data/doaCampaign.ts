@@ -261,16 +261,16 @@ export const softrEmbeds: Record<
   caSenators: {
     id: "softr-aa809bb3-6a3d-4593-89b0-cfa55405f912-ca-senators",
     src: "https://actionhub.softr.app/embed/pages/aa809bb3-6a3d-4593-89b0-cfa55405f912/blocks/ca-senators",
-    initialHeight: 280,
+    initialHeight: 360,
   },
   caDelegation: {
     id: "softr-aa809bb3-6a3d-4593-89b0-cfa55405f912-ca-delegation-show5",
     src: "https://actionhub.softr.app/embed/pages/aa809bb3-6a3d-4593-89b0-cfa55405f912/blocks/ca-delegation-show5",
-    initialHeight: 740,
+    initialHeight: 820,
   },
   congressLeadership: {
     id: "softr-aa809bb3-6a3d-4593-89b0-cfa55405f912-congress-leadership",
     src: "https://actionhub.softr.app/embed/pages/aa809bb3-6a3d-4593-89b0-cfa55405f912/blocks/congress-leadership",
-    initialHeight: 840,
+    initialHeight: 920,
   },
 };

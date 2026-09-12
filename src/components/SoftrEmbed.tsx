@@ -87,7 +87,7 @@ export function SoftrEmbed({ embedKey }: SoftrEmbedProps) {
           selector,
         );
 
-        [400, 1200, 2500, 4000].forEach((ms) => {
+        [400, 800, 1200, 2500, 4000, 6000].forEach((ms) => {
           window.setTimeout(bumpHeight, ms);
         });
       } catch {

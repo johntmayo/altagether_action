@@ -1,0 +1,29 @@
+.button {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  min-width: 36px;
+  height: 36px;
+  min-height: 36px;
+  padding: 0;
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-small);
+  background: var(--surface-white);
+  color: var(--deep-space-blue);
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  transition:
+    transform 150ms ease,
+    background 150ms ease,
+    border-color 150ms ease;
+}
+
+.button:hover {
+  transform: translateY(-1px);
+  border-color: var(--deep-space-blue);
+  background: var(--floral-white);
+}

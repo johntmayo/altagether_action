@@ -10,8 +10,8 @@ export function Hero() {
         <Image
           src="/logo-white.png"
           alt="Altagether"
-          width={180}
-          height={50}
+          width={460}
+          height={128}
           className={styles.logo}
           priority
         />

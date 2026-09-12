@@ -1,11 +1,24 @@
 .wrapper {
   width: 100%;
-  overflow: hidden;
+  margin: var(--space-6) 0;
+  padding: var(--space-5) var(--space-4);
+  background: #111827;
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-medium);
+  overflow: visible;
 }
 
 .frame {
   display: block;
   width: 100%;
+  min-height: 120px;
   border: none;
-  background: transparent;
+  background: #111827;
+}
+
+@media (max-width: 640px) {
+  .wrapper {
+    margin: var(--space-5) 0;
+    padding: var(--space-4) var(--space-3);
+  }
 }

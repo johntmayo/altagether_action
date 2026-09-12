@@ -20,6 +20,13 @@
   color: var(--text-secondary);
 }
 
+.contactFields {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  margin-bottom: var(--space-4);
+}
+
 .actions {
   display: flex;
   flex-wrap: wrap;

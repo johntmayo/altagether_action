@@ -1,0 +1,41 @@
+.row {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.label {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.valueGroup {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.value,
+.valueLink {
+  flex: 1;
+  min-width: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--deep-space-blue);
+  word-break: break-word;
+}
+
+.valueLink {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+@media (max-width: 640px) {
+  .valueGroup {
+    align-items: flex-start;
+  }
+}

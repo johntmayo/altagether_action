@@ -17,8 +17,8 @@
 
 .logo {
   width: auto;
-  height: 50px;
-  margin: 0 auto var(--space-4);
+  height: 128px;
+  margin: 0 auto var(--space-5);
 }
 
 .eyebrow {
@@ -74,6 +74,6 @@
   }
 
   .logo {
-    height: 44px;
+    height: 96px;
   }
 }

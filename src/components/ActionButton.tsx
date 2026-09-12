@@ -25,11 +25,14 @@ export function ActionButton({
     }
   }
 
+  const isWebLink = href.startsWith("http");
+
   return (
     <a
       href={href}
-      target="_blank"
-      rel="noopener noreferrer"
+      {...(isWebLink
+        ? { target: "_blank", rel: "noopener noreferrer" }
+        : {})}
       className={`${styles.button} ${variant === "primary" ? styles.primary : styles.secondary}`}
       onClick={handleClick}
     >
