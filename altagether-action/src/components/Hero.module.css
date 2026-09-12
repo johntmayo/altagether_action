@@ -1,0 +1,79 @@
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: 2.8rem 1.25rem 2.5rem;
+  color: white;
+  text-align: center;
+  background: var(--deep-space-blue);
+  border-bottom: 3px solid var(--text-primary);
+}
+
+.inner {
+  position: relative;
+  z-index: 1;
+  width: var(--content-width);
+  margin-inline: auto;
+}
+
+.logo {
+  width: auto;
+  height: 50px;
+  margin: 0 auto var(--space-4);
+}
+
+.eyebrow {
+  margin: 0 0 var(--space-3);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--golden-orange);
+}
+
+.title {
+  margin: 0 0 var(--space-4);
+  font-size: clamp(2rem, 6vw, 3.6rem);
+  font-weight: 900;
+  line-height: 1.06;
+}
+
+.intro {
+  margin: 0 auto;
+  max-width: 42rem;
+  font-family: var(--font-reading);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.decorLeft,
+.decorRight {
+  position: absolute;
+  border: 2px solid rgba(255, 255, 255, 0.08);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.decorLeft {
+  width: 220px;
+  height: 220px;
+  top: -80px;
+  left: -60px;
+}
+
+.decorRight {
+  width: 180px;
+  height: 180px;
+  bottom: -70px;
+  right: -40px;
+}
+
+@media (max-width: 640px) {
+  .hero {
+    padding: 2rem 1rem 1.75rem;
+  }
+
+  .logo {
+    height: 44px;
+  }
+}

@@ -1,0 +1,19 @@
+.footer {
+  margin-top: auto;
+  padding: var(--space-6) var(--space-4);
+  border-top: 2px solid var(--border-color);
+  background: var(--floral-white);
+}
+
+.inner {
+  width: var(--content-width);
+  margin-inline: auto;
+}
+
+.text {
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  text-align: center;
+}

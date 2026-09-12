@@ -1,0 +1,11 @@
+.wrapper {
+  width: 100%;
+  overflow: hidden;
+}
+
+.frame {
+  display: block;
+  width: 100%;
+  border: none;
+  background: transparent;
+}
