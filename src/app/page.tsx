@@ -3,6 +3,8 @@ import { Footer } from "@/components/Footer";
 import { Hero } from "@/components/Hero";
 import { ScriptAccordion, ScriptAccordionGroup } from "@/components/ScriptAccordion";
 import { Section } from "@/components/Section";
+import sectionStyles from "@/components/Section.module.css";
+import { ShareSection } from "@/components/ShareSection";
 import { SoftrEmbed } from "@/components/SoftrEmbed";
 import {
   leadershipScripts,
@@ -67,6 +69,20 @@ export default function Home() {
             }))}
           />
           <SoftrEmbed embedKey="congressLeadership" />
+        </Section>
+
+        <Section
+          id="share"
+          step={5}
+          title={
+            <>
+              Your story can help move Congress.{" "}
+              <span className={sectionStyles.titleAccent}>#fundrecoverynow</span>
+            </>
+          }
+          intro="Share this campaign on social media with the campaign graphics below. Help us show Congress how many people are standing with survivors."
+        >
+          <ShareSection />
         </Section>
       </main>
       <Footer />

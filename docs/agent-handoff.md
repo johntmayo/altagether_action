@@ -21,6 +21,7 @@ A working first version is live (or deploying) on Vercel. Core functionality ver
 - **DOA campaign tracking** for featured politicians (call / email / post) via `src/lib/tracking.ts`
 - **Native script accordions** with copy buttons (senators, reps, 6 leadership scripts)
 - **Three Softr iframe embeds** (CA senators, CA House delegation, congressional leadership)
+- **Social share section** (step 5) mirroring the block at the bottom of DOA's own page — Facebook / X / Instagram graphics, download links, and share buttons
 - Mobile-first responsive layout
 - `.env.example` with `GEOCODIO_API_KEY`
 
@@ -37,7 +38,7 @@ A working first version is live (or deploying) on Vercel. Core functionality ver
 │   ├── data/doaCampaign.ts # Politician data, scripts, Softr embed URLs
 │   ├── lib/                # tracking, copyToClipboard, formatPhone
 │   └── types/lookup.ts
-├── public/                 # logo-white.png, logo-color.png
+├── public/                 # logo-white.png, logo-color.png, share/ (DOA campaign graphics)
 ├── docs/                   # Reference only — NOT deployed
 │   ├── build-brief.md
 │   ├── style-guide.md
@@ -91,6 +92,7 @@ The partner kit in `docs/partner-kit/` is **authoritative for campaign content**
 2. Altagether's own Geocodio key vs. DOA's shared partner key?
 3. Should `trackingSource` remain `"partner"` or become `"altagether"`?
 4. Is it intentional that generic/non-featured lookup results are not DOA-tracked?
+5. Which hashtag is canonical? DOA's share heading says `#fundrecoverynow`, but every X post intent — the share button and all 20 politician post links — uses `#fundtherecovery`. We mirror both verbatim rather than picking one. John's call was not to second-guess DOA here, so only change this if DOA asks.
 
 ---
 
@@ -99,8 +101,9 @@ The partner kit in `docs/partner-kit/` is **authoritative for campaign content**
 1. **Softr embed Call buttons** still use `tel:` links inside iframes — awkward on desktop. We improved **our** lookup cards; embeds are DOA-controlled.
 2. **Softr iframe clipping/spacing** — partially mitigated with dark wrapper + taller initial heights in `SoftrEmbed.tsx`; may need more tuning.
 3. **Congress uses contact forms, not email addresses** — our UI labels this honestly as "Contact form."
-4. **No custom favicon / Open Graph meta** yet.
-5. **DNS** for `action.altagether.org` was recently configured (Namecheap CNAME → Vercel project-specific target); may still be propagating in some browsers.
+4. **No custom favicon / Open Graph meta** yet. Not blocking the share section: its buttons deliberately share `deptofangels.org/take-action`, so Facebook and X render DOA's Open Graph tags. OG meta is still needed before anyone shares `action.altagether.org` directly.
+5. **Share graphics are copies.** `public/share/*.png` were downloaded from `deptofangels.org/s/`. They are DOA artwork and print DOA's URL as the call to action. If DOA revises them, re-download; we won't pick up changes automatically.
+6. **DNS** for `action.altagether.org` was recently configured (Namecheap CNAME → Vercel project-specific target); may still be propagating in some browsers.
 
 ---
 
@@ -117,6 +120,7 @@ The partner kit in `docs/partner-kit/` is **authoritative for campaign content**
 | Lookup result cards | `src/components/RepresentativeCard.tsx`, `ContactField.tsx` |
 | Softr iframes | `src/components/SoftrEmbed.tsx` |
 | Script accordions | `src/components/ScriptAccordion.tsx` |
+| Social share section | `src/components/ShareSection.tsx`, `src/data/doaCampaign.ts` → `shareChannels` |
 
 ---
 

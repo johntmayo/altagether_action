@@ -274,3 +274,57 @@ export const softrEmbeds: Record<
     initialHeight: 920,
   },
 };
+
+/**
+ * Social share channels, mirroring the block at the bottom of
+ * deptofangels.org/take-action. The share URLs point at DOA's page rather than
+ * ours because the campaign graphics themselves print DOA's URL as the call to
+ * action, and DOA's page carries the Open Graph tags that render the preview.
+ *
+ * Graphics are DOA artwork, copied into public/share/ from deptofangels.org/s/.
+ * Instagram has no web share intent, so its button opens instagram.com exactly
+ * as DOA's does — the graphic has to be saved first.
+ */
+export const shareChannels = [
+  {
+    key: "facebook",
+    heading: "Share on Facebook",
+    buttonLabel: "Share on Facebook",
+    shareUrl:
+      "https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.deptofangels.org%2Ftake-action",
+    graphic: {
+      src: "/share/share-facebook.png",
+      width: 940,
+      height: 788,
+      alt: "Campaign graphic for Facebook: Disaster Recovery Needs Federal Support.",
+      linkLabel: "Facebook graphic",
+    },
+  },
+  {
+    key: "x",
+    heading: "Share on X",
+    buttonLabel: "Share on X",
+    shareUrl:
+      "https://x.com/intent/post?text=Help%20us%20show%20Congress%20how%20many%20people%20are%20standing%20with%20survivors.%20%23fundtherecovery&url=https%3A%2F%2Fwww.deptofangels.org%2Ftake-action",
+    graphic: {
+      src: "/share/share-x.png",
+      width: 1600,
+      height: 900,
+      alt: "Campaign graphic for X: Disaster Recovery Needs Federal Support.",
+      linkLabel: "X graphic",
+    },
+  },
+  {
+    key: "instagram",
+    heading: "Share on Instagram",
+    buttonLabel: "Share on Instagram",
+    shareUrl: "https://www.instagram.com",
+    graphic: {
+      src: "/share/share-instagram.png",
+      width: 1080,
+      height: 1350,
+      alt: "Campaign graphic for Instagram: Disaster Recovery Needs Federal Support.",
+      linkLabel: "Instagram graphic",
+    },
+  },
+] as const;

@@ -4,7 +4,7 @@ import styles from "./Section.module.css";
 type SectionProps = {
   id?: string;
   step?: number;
-  title: string;
+  title: ReactNode;
   intro?: string;
   children: ReactNode;
 };
